@@ -1,31 +1,35 @@
+<mat-drawer-container class="app-container" autosize>
 
-
-
-
-
-<mat-drawer-container class="example-container" autosize>
-  
-  <mat-drawer #drawer class="example-sidenav" mode="side">
-    <p>Auto-resizing sidenav</p>
-    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+  <mat-drawer #drawer class="sidenav" mode="side">
+    <!-- <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
     <button (click)="showFiller = !showFiller" mat-raised-button>
       Toggle extra text
-    </button>
+    </button> -->
+
+    <ul (click)="drawer.toggle()">
+      <a routerLink="/dashboard">
+        <li><button mat-button>Dashboard</button></li>
+      </a>
+      <a routerLink="/hives">
+        <li><button mat-button>Hives</button></li>
+      </a>
+    </ul>
+
+
+
+
   </mat-drawer>
 
+  <mat-toolbar color="primary">
 
+    <button mat-icon-button mat-button (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Hive manager</span>
+    <!-- <span class="example-spacer"></span> -->
 
+  </mat-toolbar>
 
-<mat-toolbar color="primary">
-
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" mat-button (click)="drawer.toggle()">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>My App</span>
-  <span class="example-spacer"></span>
-
-</mat-toolbar>
-
-
+  <router-outlet></router-outlet>
 
 </mat-drawer-container>

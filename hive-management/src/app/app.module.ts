@@ -9,10 +9,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { HivesComponent } from './hives/hives.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DashboardComponent,
+    HivesComponent
   ],
   imports: [
     BrowserModule,
@@ -26,4 +30,4 @@ import { MatSidenavModule } from '@angular/material/sidenav';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {   showFiller = false; }
+export class AppModule { }

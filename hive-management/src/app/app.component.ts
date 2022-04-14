@@ -12,35 +12,62 @@ export class AppComponent implements OnInit {
   showFiller = false;
 
   hive!: Hive;
+  hives: any;
+  hiveId!: string;
 
   constructor(private firestore: AngularFirestore) { }
 
   ngOnInit(): void {
-    // this.hive = new Hive;
-    // console.log('new hive is ', this.hive);
-    // console.log('toJSON is ', this.hive.toJSON());
-
-    // this.firestore
-    //   .collection('hives')
-    //   .valueChanges()
-    //   .subscribe((hives: any)=>{console.log('hives ', hives)})
-      // .add(this.hive.toJSON())
-      // .then((result: any) => {
-      //   console.log('adding hive finished', result);
-      // })
-
-      this.addHive();
+    this.loadHives();
+    this.addHive();
   }
 
-  addHive(){
+  loadHives() {
+    this.firestore
+      .collection('hives')
+      .valueChanges()
+      .subscribe((hives: any) => { console.log('hives ', hives) })
+
+
+    this
+      .firestore
+      .collection('hives')
+      .doc('QhdFQq8k7BPY3hTPXXFd')
+      .valueChanges()
+      .subscribe((hive: any) => {
+
+        console.log('specific hive is: ', hive);
+      });
+  }
+
+  addHive() {
 
     let hive = new Hive;
-    console.log('type is', typeof(hive.toJSON()));
-    console.log(hive.toJSON())
+    // console.log(hive.toJSON())
 
+    // add a new hive
     this.firestore
-    .collection('hives')
-    .add(hive.toJSON())
+      .collection('hives')
+      .add(hive.toJSON())
+      .then((hiveInfo: any) => {
+        this.hiveId = hiveInfo.id;
+        console.log('hiveId is: ', this.hiveId);
+        this.hive = hive;
+        this.hive.hiveId = this.hiveId;
+        this.saveId();
+      })
+
+
+
+
+  }
+
+  saveId() {
+    this.firestore
+      .collection('hives')
+      .doc(this.hiveId)
+      .update(this.hive.toJSON())
+    console.log('hiveId has been updated ', this.hive)
   }
 
 }

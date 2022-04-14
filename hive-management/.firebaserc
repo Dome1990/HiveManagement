@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "hive-management-640f0": {
+      "hosting": {
+        "hive-management": [
+          "hive-management-640f0"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "hive-management-640f0"
+  }
+}

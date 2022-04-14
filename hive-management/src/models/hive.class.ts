@@ -1,6 +1,3 @@
-import { Check } from "./check.class";
-import { Treatment } from "./treatment.class";
-
 export class Hive {
     hiveId: string = '';
     name: string = '';
@@ -9,8 +6,8 @@ export class Hive {
     ageOfQueen!: number;
     honeycombs!: number;
     status: string = '';
-    check: Check = new Check('');
-    treatment: Treatment = new Treatment('');
+    check: string = '';
+    treatment: string = '';
 
     constructor(obj?: any) {
         this.hiveId = obj ? obj.hiveId : '';
@@ -20,8 +17,8 @@ export class Hive {
         this.ageOfQueen = obj ? obj.ageOfQueen : '';
         this.honeycombs = obj ? obj.honeycombs : '';
         this.status = obj ? obj.status : '';
-        this.check = obj ? obj.check : new Check('');
-        this.treatment = obj ? obj.treatment : new Treatment('');
+        this.check = obj ? obj.check : '';
+        this.treatment = obj ? obj.treatment : '';
     }
 
     public toJSON() {

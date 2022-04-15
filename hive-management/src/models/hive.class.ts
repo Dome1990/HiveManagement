@@ -3,8 +3,8 @@ export class Hive {
     name: string = '';
     type: string = '';
     strength: string = '';
-    ageOfQueen!: number;
-    honeycombs!: number;
+    ageOfQueen: any;
+    honeycombs: any;
     status: string = '';
     check: string = '';
     treatment: string = '';

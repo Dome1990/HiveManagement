@@ -11,18 +11,24 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HivesComponent } from './hives/hives.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
 import { AngularFireModule } from '@angular/fire/compat';
+import { AddHiveComponent } from './add-hive/add-hive.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    HivesComponent
+    HivesComponent,
+    AddHiveComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +38,11 @@ import { AngularFireModule } from '@angular/fire/compat';
     MatIconModule,
     MatButtonModule,
     MatSidenavModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     AngularFireModule.initializeApp(environment.firebase),

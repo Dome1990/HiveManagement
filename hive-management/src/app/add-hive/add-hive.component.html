@@ -1,0 +1,59 @@
+<p>add-hive works!</p>
+
+
+<p>
+    <mat-form-field appearance="legacy">
+        <mat-label>Hive name</mat-label>
+        <input [(ngModel)]="hive.name" matInput placeholder="Hive name">
+    </mat-form-field>
+</p>
+<p>
+    <mat-form-field appearance="legacy">
+        <mat-label>Type of hive</mat-label>
+        <input [(ngModel)]="hive.type" matInput placeholder="Type of hive">
+    </mat-form-field>
+</p>
+<p>
+    <mat-form-field appearance="legacy">
+        <mat-label>Strength</mat-label>
+        <input [(ngModel)]="hive.strength" matInput placeholder="Strength">
+        <mat-hint>e.g. medium or big</mat-hint>
+    </mat-form-field>
+</p>
+<p>
+    <mat-form-field appearance="legacy">
+        <mat-label>Age of the queen</mat-label>
+        <input [(ngModel)]="hive.ageOfQueen" matInput placeholder="Age of the queen">
+        <mat-hint>e.g. spring 2021</mat-hint>
+    </mat-form-field>
+</p>
+<p>
+    <mat-form-field appearance="legacy">
+        <mat-label>Honeycombs</mat-label>
+        <input [(ngModel)]="hive.honeycombs" matInput placeholder="Honeycombs">
+        <mat-hint>How many honeycombs are in the hive</mat-hint>
+    </mat-form-field>
+</p>
+<p>
+    <mat-form-field appearance="legacy">
+        <mat-label>Status</mat-label>
+        <input [(ngModel)]="hive.status" matInput placeholder="Status">
+        <mat-hint>e.g. in treatment or queenless</mat-hint>
+    </mat-form-field>
+</p>
+
+
+
+
+
+<!-- <p>
+    <mat-form-field appearance="standard">
+        <mat-label>Standard form field</mat-label>
+        <input matInput placeholder="Placeholder">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+</p> -->
+
+<button mat-button mat-dialog-close>Cancel</button>
+<button mat-button (click)="save()" cdkFocusInitial>Add</button>

@@ -19,33 +19,36 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadHives();
-    this.addHive();
+    //this.addHive();
   }
 
   loadHives() {
+    /**
+     * loading every hive in the doc of the collection
+     */
     this.firestore
       .collection('hives')
       .valueChanges()
       .subscribe((hives: any) => { console.log('hives ', hives) })
 
-
+    /**
+     * loading a specific hive
+     */
     this
       .firestore
       .collection('hives')
       .doc('QhdFQq8k7BPY3hTPXXFd')
       .valueChanges()
       .subscribe((hive: any) => {
-
         console.log('specific hive is: ', hive);
       });
   }
 
+  /**
+   * adding a new hive to the firestore collection
+   */
   addHive() {
-
     let hive = new Hive;
-    // console.log(hive.toJSON())
-
-    // add a new hive
     this.firestore
       .collection('hives')
       .add(hive.toJSON())
@@ -56,12 +59,11 @@ export class AppComponent implements OnInit {
         this.hive.hiveId = this.hiveId;
         this.saveId();
       })
-
-
-
-
   }
 
+  /**
+   * save the id of the hive in the doc
+   */
   saveId() {
     this.firestore
       .collection('hives')
@@ -69,5 +71,7 @@ export class AppComponent implements OnInit {
       .update(this.hive.toJSON())
     console.log('hiveId has been updated ', this.hive)
   }
+
+
 
 }

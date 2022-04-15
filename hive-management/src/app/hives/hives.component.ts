@@ -1,4 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { AddHiveComponent } from '../add-hive/add-hive.component';
+import { MatDialog } from '@angular/material/dialog';
+import { Hive } from 'src/models/hive.class';
+
+
+export interface DialogData {
+  name: string;
+  type: string;
+}
 
 @Component({
   selector: 'app-hives',
@@ -7,10 +16,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HivesComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
+
+  hive: Hive = new Hive();
 
   ngOnInit(): void {
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(AddHiveComponent)
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log(`Dialog result: ${result}`);
+    // });
   }
 
 }

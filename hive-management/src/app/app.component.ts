@@ -34,14 +34,14 @@ export class AppComponent implements OnInit {
     /**
      * loading a specific hive
      */
-    this
-      .firestore
-      .collection('hives')
-      .doc('QhdFQq8k7BPY3hTPXXFd')
-      .valueChanges()
-      .subscribe((hive: any) => {
-        console.log('specific hive is: ', hive);
-      });
+    // this
+    //   .firestore
+    //   .collection('hives')
+    //   .doc('QhdFQq8k7BPY3hTPXXFd')
+    //   .valueChanges()
+    //   .subscribe((hive: any) => {
+    //     console.log('specific hive is: ', hive);
+    //   });
   }
 
   /**

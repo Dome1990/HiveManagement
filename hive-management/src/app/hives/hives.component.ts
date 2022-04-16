@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AddHiveComponent } from '../add-hive/add-hive.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Hive } from 'src/models/hive.class';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 
 export interface DialogData {
@@ -16,19 +17,29 @@ export interface DialogData {
 })
 export class HivesComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
-
-
+  constructor(
+    public dialog: MatDialog,
+    private firestore: AngularFirestore,
+    ) { }
   hive: Hive = new Hive();
+  allHives: any;
 
   ngOnInit(): void {
+    this.loadAllHives();
+  }
+
+  loadAllHives(){
+    this.firestore
+      .collection('hives')
+      .valueChanges()
+      .subscribe((hives: any) => { 
+        this.allHives = hives;
+        console.log('hives ', this.allHives); 
+      })
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(AddHiveComponent)
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log(`Dialog result: ${result}`);
-    // });
+    const dialogRef = this.dialog.open(AddHiveComponent);
   }
 
 }

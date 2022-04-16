@@ -1,6 +1,18 @@
-<div class="hives-container">
-
-    <mat-card *ngFor="let hive of allHives" class="hive-card" routerLink="/hive/{{ hive.hiveId }}">
+<div class="hive-detail-card">
+    <mat-card class="hive-card">
+        <button mat-icon-button [matMenuTriggerFor]="menu" class="more-btn">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" xPosition="before">
+            <button mat-menu-item (click)="delete(hive.hiveId)">
+                <mat-icon>delete</mat-icon>
+                <span>Delete</span>
+            </button>
+            <button mat-menu-item (click)="editHive()">
+                <mat-icon>mode_edit</mat-icon>
+                <span>Edit hive informations</span>
+            </button>
+        </mat-menu>
         <mat-card-header>
             <div mat-card-avatar class="header-image"></div>
             <mat-card-title>{{ hive.name }}</mat-card-title>
@@ -27,11 +39,4 @@
             </table>
         </mat-card-content>
     </mat-card>
-
-
 </div>
-
-
-<button mat-fab color="primary" (click)="openDialog()">
-    <mat-icon>add</mat-icon>
-</button>

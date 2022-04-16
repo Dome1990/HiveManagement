@@ -1,0 +1,24 @@
+.hive-card {
+    width: 50vw;
+    min-width: 250px;
+    max-width: 600px;
+    margin: 16px;
+    transition: all ease-in-out 255ms;
+    position: relative;
+    .more-btn{
+        position: absolute;
+        top: 16px;
+        right: 16px;
+    }
+}
+
+.hive-detail-card{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.header-image {
+    background-image: url(../../assets/img/profile/bee.jpg);
+    background-size: cover;
+}

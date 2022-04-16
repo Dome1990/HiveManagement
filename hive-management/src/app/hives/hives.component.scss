@@ -1,5 +1,28 @@
-button{
+.hives-container{
+    width: 100vw;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+button {
     position: absolute;
     bottom: 54px;
     right: 54px;
+}
+
+.hive-card {
+    min-width: 250px;
+    margin: 16px;
+    cursor: pointer;
+    transition: all ease-in-out 255ms;
+    &:hover{
+        transform: scale(1.08);
+    }
+}
+
+.header-image {
+    background-image: url(../../assets/img/profile/bee.jpg);
+    background-size: cover;
 }

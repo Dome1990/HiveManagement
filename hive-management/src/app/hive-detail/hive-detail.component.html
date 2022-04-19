@@ -4,13 +4,21 @@
             <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu" xPosition="before">
-            <button mat-menu-item (click)="delete(hive.hiveId)">
-                <mat-icon>delete</mat-icon>
-                <span>Delete</span>
-            </button>
             <button mat-menu-item (click)="editHive()">
                 <mat-icon>mode_edit</mat-icon>
                 <span>Edit hive informations</span>
+            </button>
+            <button mat-menu-item (click)="openDialog('check')">
+                <mat-icon>mode_edit</mat-icon>
+                <span>Check the hive</span>
+            </button>
+            <button mat-menu-item (click)="openDialog('treatment')">
+                <mat-icon>mode_edit</mat-icon>
+                <span>Start a new treatment</span>
+            </button>
+            <button mat-menu-item (click)="delete(hive.hiveId)">
+                <mat-icon>delete</mat-icon>
+                <span>Delete</span>
             </button>
         </mat-menu>
         <mat-card-header>

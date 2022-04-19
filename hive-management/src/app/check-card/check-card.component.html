@@ -1,0 +1,48 @@
+<div class="check-card">
+
+    <h1 mat-dialog-title>Check the hive</h1>
+    <div mat-dialog-content>Please fill the form to create a new check</div>
+
+    <mat-form-field appearance="legacy">
+        <mat-label>Date</mat-label>
+        <input [(ngModel)]="data.check.dateStamp" matInput placeholder="Date">
+    </mat-form-field>
+
+    <!-- <mat-form-field appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input [(ngModel)]="data.check.dateStamp" matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field> -->
+
+    <mat-form-field appearance="legacy">
+        <mat-label>Queenright</mat-label>
+        <input [(ngModel)]="data.check.queenright" matInput placeholder="Queenright">
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+        <mat-label>Varroa</mat-label>
+        <input [(ngModel)]="data.check.varroa" matInput placeholder="Varroa">
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+        <mat-label>Brood</mat-label>
+        <input [(ngModel)]="data.check.brood" matInput placeholder="Brood">
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+        <mat-label>To do</mat-label>
+        <input [(ngModel)]="data.check.toDo" matInput placeholder="To do">
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+        <mat-label>Comment</mat-label>
+        <input [(ngModel)]="data.check.comment" matInput placeholder="Comment">
+    </mat-form-field>
+
+    <div mat-dialog-actions>
+        <button mat-button mat-dialog-close>Close</button>
+        <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+    </div>
+
+</div>

@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
@@ -25,6 +26,11 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AddHiveComponent } from './add-hive/add-hive.component';
 import { HiveDetailComponent } from './hive-detail/hive-detail.component';
+import { CheckCardComponent } from './check-card/check-card.component';
+import { TreatmentCardComponent } from './treatment-card/treatment-card.component';
+import { MatNativeDateModule } from '@angular/material/core';
+
+
 
 @NgModule({
   declarations: [
@@ -32,7 +38,9 @@ import { HiveDetailComponent } from './hive-detail/hive-detail.component';
     DashboardComponent,
     HivesComponent,
     AddHiveComponent,
-    HiveDetailComponent
+    HiveDetailComponent,
+    CheckCardComponent,
+    TreatmentCardComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +56,8 @@ import { HiveDetailComponent } from './hive-detail/hive-detail.component';
     FormsModule,
     MatCardModule,
     MatMenuModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
 
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),

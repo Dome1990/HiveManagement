@@ -1,3 +1,5 @@
+import { Check } from "./check.class";
+
 export class Hive {
     hiveId: string = '';
     name: string = '';
@@ -6,8 +8,8 @@ export class Hive {
     ageOfQueen: any;
     honeycombs: any;
     status: string = '';
-    check: string = '';
-    treatment: string = '';
+    // check = [];
+    // treatment = [];
 
     constructor(obj?: any) {
         this.hiveId = obj ? obj.hiveId : '';
@@ -17,8 +19,8 @@ export class Hive {
         this.ageOfQueen = obj ? obj.ageOfQueen : '';
         this.honeycombs = obj ? obj.honeycombs : '';
         this.status = obj ? obj.status : '';
-        this.check = obj ? obj.check : '';
-        this.treatment = obj ? obj.treatment : '';
+        // this.check = obj ? obj.check : [];
+        // this.treatment = obj ? obj.treatment : '';
     }
 
     public toJSON() {
@@ -30,8 +32,8 @@ export class Hive {
             ageOfQueen: this.ageOfQueen,
             honeycombs: this.honeycombs,
             status: this.status,
-            check: this.check,
-            treatment : this.treatment,
+            // check: this.check,
+            // treatment : this.treatment,
         }
     }
 }

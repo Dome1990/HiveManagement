@@ -21,7 +21,7 @@ export class HiveDetailComponent implements OnInit {
 
   hive: Hive = new Hive();
   hiveId: string = '';
-  date: Date = new Date();
+  dateStamp: Date = new Date();
   check: Check = new Check();
 
   constructor(
@@ -40,13 +40,13 @@ export class HiveDetailComponent implements OnInit {
       this.getHive();
     })
     this.firestore
-    .collection('hives')
-    .doc(this.hiveId)
-    .valueChanges()
-    .subscribe((hive: any)=>{
-      this.hive = hive;
-      console.log('this hive is: ', this.hive)
-    })
+      .collection('hives')
+      .doc(this.hiveId)
+      .valueChanges()
+      .subscribe((hive: any) => {
+        this.hive = hive;
+        console.log('this hive is: ', this.hive)
+      })
   }
 
 
@@ -97,7 +97,6 @@ export class HiveDetailComponent implements OnInit {
       }
       );
       dialogRef.afterClosed().subscribe(result => {
-        //this.date = result.check.dateStamp ? result.check.dateStamp : undefined;
         this.resultToCheck(result);
         this.saveCheck();
       });
@@ -108,44 +107,49 @@ export class HiveDetailComponent implements OnInit {
   }
 
   /**
-   * put the answer of the check-card into check class
+   * put the data of the check-card into check class and change the date into a timestamp
    * @param result answer of check-card
    */
-  resultToCheck(result: any){
-      this.check.dateStamp = result.check.dateStamp ? result.check.dateStamp : '';
-      this.check.queenright = result.check.queenright ? result.check.queenright : '';
-      this.check.varroa = result.check.varroa ? result.check.varroa : '';
-      this.check.brood = result.check.brood ? result.check.brood : '';
-      this.check.toDo = result.check.toDo ? result.check.toDo : '';
-      this.check.comment = result.check.comment ? result.check.comment : '';
+  resultToCheck(result: any) {
+    this.dateStamp = result.check.datestamp ? result.check.dateStamp.getTime() : undefined;
+    this.check.dateStamp = this.dateStamp ? this.dateStamp : '';
+    this.check.queenright = result.check.queenright ? result.check.queenright : '';
+    this.check.varroa = result.check.varroa ? result.check.varroa : '';
+    this.check.brood = result.check.brood ? result.check.brood : '';
+    this.check.toDo = result.check.toDo ? result.check.toDo : '';
+    this.check.comment = result.check.comment ? result.check.comment : '';
+    // console.log('result is: ', result);
+    // console.log('date is: ', result.check.dateStamp);
+    // console.log('check datestamp is: ', this.check.dateStamp);
+    // console.log('check is: ', this.check);
   }
 
   /**
    * save the new check and store the given id in check.checkId
    */
-  saveCheck(){
+  saveCheck() {
     this.firestore
-    .collection('hives')
-    .doc(this.hiveId)
-    .collection('checks')
-    .add(this.check.checkToJSON())
-    .then((checkInfo: any)=>{
-      console.log('snapshop is: ', checkInfo.id);
-      this.check.checkId = checkInfo.id;
-      this.saveCheckId();
-    })
+      .collection('hives')
+      .doc(this.hiveId)
+      .collection('checks')
+      .add(this.check.checkToJSON())
+      .then((checkInfo: any) => {
+        console.log('snapshop is: ', checkInfo.id);
+        this.check.checkId = checkInfo.id;
+        this.saveCheckId();
+      })
   }
 
   /**
    * save the updated check
    */
-  saveCheckId(){
+  saveCheckId() {
     this.firestore
-    .collection('hives')
-    .doc(this.hiveId)
-    .collection('checks')
-    .doc(this.check.checkId)
-    .update(this.check.checkToJSON())
+      .collection('hives')
+      .doc(this.hiveId)
+      .collection('checks')
+      .doc(this.check.checkId)
+      .update(this.check.checkToJSON())
   }
 
   editHive() {

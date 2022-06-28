@@ -1,3 +1,5 @@
+
+
 <div class="hive-detail-card">
     <mat-card class="hive-card">
         <button mat-icon-button [matMenuTriggerFor]="menu" class="more-btn">
@@ -43,6 +45,42 @@
                 <tr>
                     <td>Status</td>
                     <td>{{ hive.status }}</td>
+                </tr>
+            </table>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+
+
+
+<div *ngFor="let check of checkups" class="hive-detail-card">
+    <mat-card class="hive-card">
+        <mat-card-header>
+            <mat-card-title>Checkup</mat-card-title>
+            <mat-card-subtitle>subtitle</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <table>
+                <tr>
+                    <td>Brood</td>
+                    <td>{{ check.brood }}</td>
+                </tr>
+                <tr>
+                    <td>Comment</td>
+                    <td>{{ check.comment }}</td>
+                </tr>
+                <tr>
+                    <td>Queenright</td>
+                    <td>{{ check.queenright }}</td>
+                </tr>
+                <tr>
+                    <td>To Do</td>
+                    <td>{{ check.toDo }}</td>
+                </tr>
+                <tr>
+                    <td>Varroa</td>
+                    <td>{{ check.varroa }}</td>
                 </tr>
             </table>
         </mat-card-content>

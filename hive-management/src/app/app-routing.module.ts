@@ -6,6 +6,7 @@ import { HivesComponent } from './hives/hives.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
+  { path: '', component: DashboardComponent },
   { path: 'hives', component: HivesComponent },
   { path: 'hive/:id', component: HiveDetailComponent },
 ];

@@ -12,14 +12,14 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 export class AddHiveComponent implements OnInit {
   hive: Hive = new Hive();
   hiveId: any;
-  exampletime(){
-  //date
-  let date: Date = new Date();
-  let dateStamp;
-  //timestamp
-  dateStamp = date.getTime();
-  //timestamp to date
-  date = new Date(dateStamp)
+  exampletime() {
+    //date
+    let date: Date = new Date();
+    let dateStamp;
+    //timestamp
+    dateStamp = date.getTime();
+    //timestamp to date
+    date = new Date(dateStamp)
   }
   constructor(
     public dialogRef: MatDialogRef<HivesComponent>,

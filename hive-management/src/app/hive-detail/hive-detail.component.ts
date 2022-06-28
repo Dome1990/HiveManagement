@@ -23,6 +23,7 @@ export class HiveDetailComponent implements OnInit {
   hiveId: string = '';
   dateStamp: Date = new Date();
   check: Check = new Check();
+  checkups: any = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -38,6 +39,7 @@ export class HiveDetailComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.hiveId = params['id'];
       this.getHive();
+      this.getChecks();
     })
     this.firestore
       .collection('hives')
@@ -61,6 +63,30 @@ export class HiveDetailComponent implements OnInit {
       .valueChanges()
       .subscribe((hive: any) => {
         this.hive = hive;
+        console.log('hive response from firebase', hive);
+      });
+  }
+
+  /**
+   * load the checkups
+   */
+  getChecks() {
+    this
+      .firestore
+      .collection('hives')
+      .doc(this.hiveId)
+      .collection('checks')
+      .valueChanges()
+      .subscribe((check: any) => {
+        setTimeout(() => {
+          this.checkups = [];
+          for (let i = 0; i < check.length; i++) {
+            this.check = check[i];
+            this.checkups.push(this.check);
+          }
+          console.log('this.checkups are ', this.checkups);
+        }, 3000);
+
       });
   }
 
@@ -111,6 +137,14 @@ export class HiveDetailComponent implements OnInit {
    * @param result answer of check-card
    */
   resultToCheck(result: any) {
+
+    //clear this.check
+    this.check = new Check();
+    console.log('empty check ', this.check)
+
+
+
+
     this.dateStamp = result.check.datestamp ? result.check.dateStamp.getTime() : undefined;
     this.check.dateStamp = this.dateStamp ? this.dateStamp : '';
     this.check.queenright = result.check.queenright ? result.check.queenright : '';
@@ -118,7 +152,7 @@ export class HiveDetailComponent implements OnInit {
     this.check.brood = result.check.brood ? result.check.brood : '';
     this.check.toDo = result.check.toDo ? result.check.toDo : '';
     this.check.comment = result.check.comment ? result.check.comment : '';
-    // console.log('result is: ', result);
+    //console.log('result is: ', result);
     // console.log('date is: ', result.check.dateStamp);
     // console.log('check datestamp is: ', this.check.dateStamp);
     // console.log('check is: ', this.check);

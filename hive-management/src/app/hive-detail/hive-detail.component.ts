@@ -78,6 +78,9 @@ export class HiveDetailComponent implements OnInit {
       .collection('checks')
       .valueChanges()
       .subscribe((check: any) => {
+        /**
+         * if there is no timeout, it will cause an error in the resultToCheck
+         */
         setTimeout(() => {
           this.checkups = [];
           for (let i = 0; i < check.length; i++) {
